@@ -12,7 +12,7 @@
 
 The utility script is expected to be included in HTML, e.g.:
 
-![alt](https://hospodarets.com/img/blog/1485637013194418000.png)
+![alt](https://hospodarets.com/img/blog/1485637349913043000.png)
 
 Params:
 
