@@ -1,0 +1,22 @@
+{
+  "name": "es-modules-utils",
+  "version": "1.0.0",
+  "main": "es-js-script.js",
+  "description": "Native ECMAScript modules utilities",
+  "author": "Serg Hospodarets <shospodarets@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/malyw/es-modules-utils",
+  "bugs": {
+    "url": "https://github.com/malyw/es-modules-utils/issues"
+  },
+  "keywords": [
+    "javascript",
+    "js",
+    "es",
+    "es6",
+    "ECMAScript"
+  ],
+  "scripts": {
+    "test": "true"
+  }
+}
