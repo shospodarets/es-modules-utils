@@ -49,7 +49,7 @@
             // EVENTS
             script.onload = triggerResolve;
             script.onerror = triggerReject;
-            setTimeout(triggerReject, 300); // reject on timeout
+            setTimeout(triggerReject, 100); // reject on timeout
 
             // start loading the script
             script.src = srcObjectURL;
