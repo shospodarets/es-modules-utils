@@ -12,6 +12,15 @@
 
 The utility script is expected to be included in HTML, e.g.:
 
+![alt](https://hospodarets.com/img/blog/1485637013194418000.png)
+
+Params:
+
+- `es="URL.js"`: the URL of the script file, which will be loaded if the browser DOESN'T support native ECMAScript modules
+- `js="URL.js"`: the URL of the script file, which will be loaded in case the browser DOES support native ECMAScript modules
+- `add-global-class`: the binary attribute, if present makes the script to add the 'esmodules'/'no-esmodules'
+HTML classes to `<html>` element depending on the ES modules support in the browser
+
 ```html
 <script
         src="es-modules-utils/es-js-script-include.js"
@@ -21,13 +30,6 @@ The utility script is expected to be included in HTML, e.g.:
         add-global-class
 ></script>
 ```
-
-Params:
-
-- `es="%URL%"`: the URL of the script file, which will be loaded in case browser DOESN'T support native ECMAScript modules
-- `js="%URL%"`: the URL of the script file, which will be loaded in case browser DOES support native ECMAScript modules
-- `add-global-class`: the binary attribute, if present makes the script to add the 'esmodules'/'no-esmodules'
-HTML classes to `<html>` element depending on the ES modules support in the browser
 
 ---
 
