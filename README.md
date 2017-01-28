@@ -29,6 +29,8 @@ Params:
 - `add-global-class`: the binary attribute, if present makes the script to add the 'esmodules'/'no-esmodules'
 HTML classes to `<html>` element depending on the ES modules support in the browser
 
+## [Demo](https://blog.hospodarets.com/demos/native-ecmascript-modules-aliases/index.html)
+
 ---
 
 ![alt](https://hospodarets.com/img/blog/1482849729640077000.png)
