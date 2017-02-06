@@ -1,7 +1,7 @@
 {
   "name": "es-modules-utils",
   "version": "1.0.1",
-  "main": "es-js-script.js",
+  "main": "no-module-fallback.js",
   "description": "Native ECMAScript modules utilities",
   "author": "Serg Hospodarets <shospodarets@gmail.com>",
   "license": "MIT",

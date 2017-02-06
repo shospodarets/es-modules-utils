@@ -4,32 +4,37 @@
 
 * With npm: `npm install es-modules-utils`
 * With yarn: `yarn add es-modules-utils`
-* Manually: get [this file](https://raw.githubusercontent.com/malyw/es-modules-utils/master/es-js-script.js)
 
 ## Usage
 
-### es-js-script
+### no-module-fallback
+
+Provides ability to use native ECMAScript modules (aka ES or ES6 modules, with native `import`/`export`)
+or the bundled JavaScript file if they are not supported.
 
 The utility script is expected to be included in HTML, e.g.:
 
-![alt](https://hospodarets.com/img/blog/1485637349913043000.png)
+```html
+<script
+            module="./module.js"
+            no-module="./no-module.js"
+            
+            add-global-class
+            add-global-variable
+            
+            src="es-modules-utils/no-module-fallback.js"
+    >
+    </script>
+```
 
 Params:
 
-- `es="URL.js"`: the URL of the script file, which will be loaded if the browser DOESN'T support native ECMAScript modules
-- `js="URL.js"`: the URL of the script file, which will be loaded in case the browser DOES support native ECMAScript modules
-- `add-global-class`: the binary attribute, if present makes the script to add the 'esmodules'/'no-esmodules'
-HTML classes to `<html>` element depending on the ES modules support in the browser
-
-```html
-<script
-        src="es-modules-utils/es-js-script-include.js"
-        
-        es="js/main-native.js"
-        js="dist/app.bundle.js"
-        add-global-class
-></script>
-```
+- `module="URL.js"`: the URL of the script file, which will be loaded if the browser DOES support native ECMAScript modules
+- `no-module="URL.js"`: the URL of the script file, which will be loaded in case the browser DOES NOT support native ECMAScript modules
+- `add-global-class`: the binary attribute, which enables adding the
+`<html class="esmodules">` class if ES modules are supported, `<html class="no-esmodules">` otherwise
+- `add-global-variable`: the binary attribute, which enables adding the global Boolean variable
+`window.esmodules=true/false`
 
 ---
 

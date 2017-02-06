@@ -5,6 +5,7 @@
     const esModulesSupportedClass = 'esmodules';
     const esModulesNotSupportedClass = 'no-esmodules';
     const isAddGlobalClassSet = currentScript.hasAttribute('add-global-class');
+    const isAddGlobalVariableSet = currentScript.hasAttribute('add-global-variable');
 
     // METHODS
     function checkJsModulesSupport() {
@@ -85,20 +86,27 @@
     checkJsModulesSupport().then(
         () => {
             insertJs({
-                src: currentScript.getAttribute('es'),
+                src: currentScript.getAttribute('module'),
                 isModule: true
             });
+
             if (isAddGlobalClassSet) {
                 document.documentElement.classList.add(esModulesSupportedClass);
+            }
+            if(isAddGlobalVariableSet){
+                window.esmodules = true;
             }
         },
         () => {
             insertJs({
-                src: currentScript.getAttribute('js')
+                src: currentScript.getAttribute('no-module')
             });
 
             if (isAddGlobalClassSet) {
                 document.documentElement.classList.add(esModulesNotSupportedClass);
+            }
+            if(isAddGlobalVariableSet){
+                window.esmodules = false;
             }
         }
     );
