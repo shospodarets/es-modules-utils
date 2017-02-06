@@ -37,7 +37,7 @@ Params:
 `window.esmodules=true/false`
 
 The solution uses the [`nomodule`](https://html.spec.whatwg.org/#attr-script-nomodule) script attribute approach,
-which also can be used without additional features like:
+which also can be used without the additional features like:
 
 ```html
 <script type="module" src="module-URL.js"></script>
