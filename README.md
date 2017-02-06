@@ -38,5 +38,7 @@ Params:
 
 ---
 
-# [Demo](https://malyw.github.com/es-modules-utils/demo/)
+### [Demo live](https://malyw.github.com/es-modules-utils/demo/)
+
+### [Demo code](https://github.com/malyw/es-modules-utils/tree/gh-pages/demo)
 
