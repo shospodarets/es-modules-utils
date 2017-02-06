@@ -38,5 +38,5 @@ Params:
 
 ---
 
-# [Demo](https://blog.hospodarets.com/demos/native-ecmascript-modules-aliases/index.html)
+# [Demo](https://malyw.github.com/es-modules-utils/demo/)
 
