@@ -1,1 +1,0 @@
-alert('The browser DOES NOT support ES modules');
