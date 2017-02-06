@@ -32,9 +32,10 @@ Params:
 - `module="module-URL.js"`: the URL of the script file, which will be loaded if the browser DOES support native ECMAScript modules
 - `no-module="no-module-URL.js"`: the URL of the script file, which will be loaded in case the browser DOES NOT support native ECMAScript modules
 - `add-global-class`: the binary attribute, which enables adding the
-`<html class="esmodules">` class if ES modules are supported, `<html class="no-esmodules">` otherwise
+`<html class="esmodules">` if ES modules are supported, `<html class="no-esmodules">` otherwise
+(can be used e.g. to show some animation till the ES module is loaded)
 - `add-global-variable`: the binary attribute, which enables adding the global Boolean variable
-`window.esmodules=true/false`
+`window.esmodules=true/false` (can be used e.g. to decide which method to use to include new scripts)
 
 The solution uses the [`nomodule`](https://html.spec.whatwg.org/#attr-script-nomodule) script attribute approach,
 which also can be used without the additional features like:

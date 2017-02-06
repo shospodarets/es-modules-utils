@@ -1,6 +1,6 @@
 {
   "name": "es-modules-utils",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "main": "no-module-fallback.js",
   "description": "Native ECMAScript modules utilities",
   "author": "Serg Hospodarets <shospodarets@gmail.com>",
