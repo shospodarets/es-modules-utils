@@ -2,112 +2,59 @@
     // VARS
     const currentScript = document.currentScript;
 
-    const esModulesSupportedClass = 'esmodules';
-    const esModulesNotSupportedClass = 'no-esmodules';
-    const isAddGlobalClassSet = currentScript.hasAttribute('add-global-class');
-    const isAddGlobalVariableSet = currentScript.hasAttribute('add-global-variable');
-
     // METHODS
-    function checkJsModulesSupport() {
-        // create an empty ES module
-        const scriptAsBlob = new Blob([''], {
-            type: 'application/javascript'
-        });
-        const srcObjectURL = URL.createObjectURL(scriptAsBlob);
-
-        // insert the ES module and listen events on it
-        const script = document.createElement('script');
-        script.type = 'module';
-        document.head.appendChild(script);
-
-        // return the loading script Promise
-        return new Promise((resolve, reject) => {
-            // HELPERS
-            let isFulfilled = false;
-
-            function triggerResolve() {
-                if (isFulfilled) return;
-                isFulfilled = true;
-
-                resolve();
-                onFulfill();
-            }
-
-            function triggerReject() {
-                if (isFulfilled) return;
-                isFulfilled = true;
-
-                reject();
-                onFulfill();
-            }
-
-            function onFulfill() {
-                // cleaning
-                URL.revokeObjectURL(srcObjectURL);
-                script.parentNode.removeChild(script)
-            }
-
-            // EVENTS
-            script.onload = triggerResolve;
-            script.onerror = triggerReject;
-            setTimeout(triggerReject, 100); // reject on timeout
-
-            // start loading the script
-            script.src = srcObjectURL;
-        });
-    }
-
-    function insertJs({src, isModule, async, defer}) {
+    function insertScript({isModule, src, scriptContent}) {
         const script = document.createElement('script');
 
         if (isModule) {
             script.type = 'module';
         } else {
-            script.type = 'application/javascript';
+            script.setAttribute('nomodule', '');
         }
 
-        if (async) {
-            script.setAttribute('async', '');
-        }
-        if (defer) {
-            script.setAttribute('defer', '');
+        if (src) {
+            script.src = src;
         }
 
-        document.head.appendChild(script);
+        if (scriptContent) {
+            script.innerHTML = scriptContent;
+        }
 
-        return new Promise((success, error) => {
-            script.onload = success;
-            script.onerror = error;
-            script.src = src;// start loading the script
-        });
+        document.head.appendChild(script); // start loading the script;
+    }
+
+    function getCommonScriptContent({isModule}) {
+        let commonScriptContent = '';
+
+        if (currentScript.hasAttribute('add-global-class')) {
+            commonScriptContent +=
+                `document.documentElement.classList.add("${isModule ? 'esmodules' : 'no-esmodules'}");`;
+        }
+
+        if (currentScript.hasAttribute('add-global-variable')) {
+            commonScriptContent += `window.esmodules = ${String(isModule)};`;
+        }
+
+        return commonScriptContent;
     }
 
     // INIT
-    checkJsModulesSupport().then(
-        () => {
-            insertJs({
-                src: currentScript.getAttribute('module'),
-                isModule: true
-            });
-
-            if (isAddGlobalClassSet) {
-                document.documentElement.classList.add(esModulesSupportedClass);
-            }
-            if(isAddGlobalVariableSet){
-                window.esmodules = true;
-            }
-        },
-        () => {
-            insertJs({
-                src: currentScript.getAttribute('no-module')
-            });
-
-            if (isAddGlobalClassSet) {
-                document.documentElement.classList.add(esModulesNotSupportedClass);
-            }
-            if(isAddGlobalVariableSet){
-                window.esmodules = false;
-            }
-        }
-    );
+    // module
+    insertScript({
+        isModule: true,
+        scriptContent: getCommonScriptContent({isModule: true})
+    });
+    insertScript({
+        isModule: true,
+        src: currentScript.getAttribute('module')
+    });
+    // no-module
+    insertScript({
+        isModule: false,
+        scriptContent: getCommonScriptContent({isModule: false})
+    });
+    insertScript({
+        isModule: false,
+        src: currentScript.getAttribute('no-module')
+    });
 }());

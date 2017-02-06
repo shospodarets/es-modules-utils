@@ -29,12 +29,20 @@ The utility script is expected to be included in HTML, e.g.:
 
 Params:
 
-- `module="URL.js"`: the URL of the script file, which will be loaded if the browser DOES support native ECMAScript modules
-- `no-module="URL.js"`: the URL of the script file, which will be loaded in case the browser DOES NOT support native ECMAScript modules
+- `module="module-URL.js"`: the URL of the script file, which will be loaded if the browser DOES support native ECMAScript modules
+- `no-module="no-module-URL.js"`: the URL of the script file, which will be loaded in case the browser DOES NOT support native ECMAScript modules
 - `add-global-class`: the binary attribute, which enables adding the
 `<html class="esmodules">` class if ES modules are supported, `<html class="no-esmodules">` otherwise
 - `add-global-variable`: the binary attribute, which enables adding the global Boolean variable
 `window.esmodules=true/false`
+
+The solution uses the [`nomodule`](https://html.spec.whatwg.org/#attr-script-nomodule) script attribute approach,
+which also can be used without the additional features like:
+
+```html
+<script type="module" src="module-URL.js"></script>
+<script nomodule src="no-module-URL.js"></script>
+```
 
 ---
 
