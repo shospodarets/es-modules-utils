@@ -46,5 +46,5 @@ which also can be used without the additional features like:
 
 ---
 
-# [Demo](https://blog.hospodarets.com/demos/native-ecmascript-modules-aliases/index.html)
+# [Demo](https://hospodarets.com/demos/native-ecmascript-modules-aliases/index.html)
 
