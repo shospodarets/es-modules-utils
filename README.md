@@ -47,7 +47,7 @@ which also can be used without the additional features like:
 
 ---
 
-### [Demo live](https://shospodarets.github.com/es-modules-utils/demo/)
+### [Demo live](https://hospodarets.com/demos/native-ecmascript-modules-aliases/index.html)
 
 ### [Demo code](https://github.com/malyw/es-modules-utils/tree/gh-pages/demo)
 
